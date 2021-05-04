@@ -1,0 +1,535 @@
+# to run
+
+# Vel2Grid ./NLLoc/nll.in 
+# Grid2Time ./NLLoc/nll.in
+# NLLoc ./NNLoc/nll.in
+
+# =============================================================================
+# Generic control file statements
+# =============================================================================
+
+# control (CONTROL message_flag (0:silent,1:few messages,2:verbose,...),
+#		RandomNumSeed)
+
+CONTROL 3 54321
+
+# -----------------------------------------------------------------------------
+# lat/long to rect grid transformation
+# -----------------------------------------------------------------------------
+
+# map projection / transformation
+
+TRANS SIMPLE 53.77577 -2.98778 0
+
+# =============================================================================
+# Vel2Grid control file statements
+# =============================================================================
+
+# output filename root
+# (VGOUT <output file root>)
+# Layer Grid
+
+VGOUT ./NLLoc/model/3km0.025   #Output File Root Name
+
+# wave type
+
+VGTYPE P
+VGTYPE S # Just use Vp/VS ratio in NLLoc control file
+
+# grid description
+# 3 x 3 x 3 km 3D grid with 0.025 km spacing
+
+VGGRID 121 121 121 0.0 0.0 0.0 0.025 0.025 0.025 SLOW_LEN #Size and Type of 3D Velocity Grid
+
+# model layers (LAYER depth, Vp_top, Vp_grad, Vs_top, Vs_grad, p_top, p_grad)
+
+# From PNR-1z Hydraulic Fracture Plan:
+	# LAYER depth VpTop VpGrad VsTop VsGrad rhoTop rhoGrad
+
+LLAYER -0.032 1.863 0.0 1.082 0.0 2.034 0.0
+LAYER 0.032 1.863 8.123 1.082 4.718 2.034 0.002
+LAYER 0.048 1.986 9.329 1.154 5.419 2.066 0.002
+LAYER 0.063 2.127 0.613 1.235 0.356 2.102 0.0
+LAYER 0.078 2.136 20.513 1.241 11.915 2.104 0.005
+LAYER 0.093 2.444 13.566 1.42 7.88 2.177 0.003
+LAYER 0.108 2.649 9.649 1.539 5.605 2.221 0.002
+LAYER 0.123 2.795 18.667 1.624 10.843 2.251 0.004
+LAYER 0.138 3.077 16.996 1.788 9.873 2.306 0.003
+LAYER 0.153 3.338 -4.631 1.939 -2.69 2.353 -0.001
+LAYER 0.169 3.268 30.987 1.899 18.0 2.34 0.005
+LAYER 0.184 3.737 -19.446 2.171 -11.296 2.42 -0.003
+LAYER 0.199 3.443 -13.117 2.0 -7.619 2.371 -0.002
+LAYER 0.214 3.248 -6.533 1.887 -3.795 2.337 -0.001
+LAYER 0.229 3.149 -3.549 1.829 -2.061 2.319 -0.001
+LAYER 0.244 3.095 5.427 1.798 3.153 2.309 0.001
+LAYER 0.259 3.178 -8.031 1.846 -4.665 2.324 -0.001
+LAYER 0.274 3.054 -19.09 1.774 -11.089 2.301 -0.004
+LAYER 0.29 2.766 1.072 1.607 0.622 2.245 0.0
+LAYER 0.305 2.782 41.774 1.616 24.265 2.248 0.008
+LAYER 0.32 3.413 -16.97 1.982 -9.857 2.366 -0.003
+LAYER 0.335 3.158 -34.521 1.834 -20.053 2.32 -0.007
+LAYER 0.35 2.638 50.325 1.533 29.233 2.219 0.01
+LAYER 0.365 3.394 8.661 1.972 5.031 2.363 0.001
+LAYER 0.38 3.524 -34.523 2.047 -20.054 2.385 -0.006
+LAYER 0.395 3.009 13.534 1.748 7.861 2.293 0.003
+LAYER 0.41 3.211 -16.343 1.865 -9.493 2.33 -0.003
+LAYER 0.425 2.968 39.876 1.724 23.163 2.285 0.007
+LAYER 0.439 3.558 -44.743 2.067 -25.99 2.391 -0.008
+LAYER 0.454 2.895 58.948 1.681 34.242 2.27 0.01
+LAYER 0.469 3.761 -41.28 2.185 -23.979 2.424 -0.007
+LAYER 0.483 3.158 12.728 1.834 7.394 2.32 0.002
+LAYER 0.498 3.343 -20.964 1.942 -12.178 2.354 -0.004
+LAYER 0.512 3.042 49.708 1.767 28.874 2.299 0.009
+LAYER 0.527 3.762 -64.19 2.185 -37.287 2.424 -0.011
+LAYER 0.541 2.834 38.806 1.646 22.542 2.258 0.007
+LAYER 0.556 3.394 15.507 1.971 9.008 2.363 0.003
+LAYER 0.57 3.617 -10.638 2.101 -6.18 2.4 -0.002
+LAYER 0.584 3.463 12.906 2.012 7.497 2.375 0.002
+LAYER 0.599 3.649 7.851 2.12 4.561 2.406 0.001
+LAYER 0.613 3.762 10.32 2.185 5.995 2.424 0.002
+LAYER 0.628 3.911 -3.76 2.272 -2.184 2.448 -0.001
+LAYER 0.642 3.857 8.634 2.24 5.015 2.439 0.001
+LAYER 0.656 3.981 -2.806 2.312 -1.63 2.459 -0.0
+LAYER 0.671 3.94 3.321 2.289 1.929 2.453 0.001
+LAYER 0.685 3.988 10.385 2.316 6.033 2.46 0.002
+LAYER 0.699 4.136 -18.742 2.403 -10.887 2.482 -0.003
+LAYER 0.714 3.869 6.669 2.247 3.874 2.441 0.001
+LAYER 0.728 3.964 6.128 2.303 3.56 2.456 0.001
+LAYER 0.742 4.051 5.333 2.353 3.098 2.47 0.001
+LAYER 0.756 4.127 2.639 2.397 1.533 2.481 0.0
+LAYER 0.771 4.165 0.301 2.419 0.175 2.487 0.0
+LAYER 0.785 4.169 3.214 2.422 1.867 2.487 0.0
+LAYER 0.799 4.215 6.002 2.449 3.487 2.494 0.001
+LAYER 0.813 4.3 -1.952 2.498 -1.134 2.507 -0.0
+LAYER 0.827 4.273 -0.374 2.482 -0.217 2.503 -0.0
+LAYER 0.842 4.267 13.697 2.479 7.956 2.502 0.002
+LAYER 0.856 4.46 -8.09 2.59 -4.699 2.53 -0.001
+LAYER 0.87 4.345 2.483 2.524 1.443 2.513 0.0
+LAYER 0.884 4.38 0.194 2.544 0.113 2.518 0.0
+LAYER 0.898 4.383 12.75 2.546 7.406 2.519 0.002
+LAYER 0.912 4.564 -14.42 2.651 -8.376 2.544 -0.002
+LAYER 0.926 4.361 4.842 2.533 2.813 2.515 0.001
+LAYER 0.94 4.429 7.764 2.573 4.51 2.525 0.001
+LAYER 0.954 4.538 1.055 2.636 0.613 2.541 0.0
+LAYER 0.968 4.553 11.211 2.645 6.512 2.543 0.002
+LAYER 0.982 4.711 -9.46 2.736 -5.495 2.564 -0.001
+LAYER 0.996 4.578 -6.319 2.659 -3.67 2.546 -0.001
+LAYER 1.01 4.489 10.45 2.607 6.07 2.534 0.001
+LAYER 1.025 4.637 -3.485 2.694 -2.024 2.554 -0.0
+LAYER 1.039 4.588 -8.638 2.665 -5.018 2.548 -0.001
+LAYER 1.053 4.466 18.925 2.594 10.993 2.531 0.003
+LAYER 1.067 4.733 -9.704 2.749 -5.637 2.567 -0.001
+LAYER 1.08 4.601 7.424 2.673 4.312 2.549 0.001
+LAYER 1.094 4.706 19.698 2.734 11.442 2.564 0.003
+LAYER 1.109 4.984 -22.228 2.895 -12.912 2.601 -0.003
+LAYER 1.123 4.67 32.741 2.713 19.018 2.559 0.004
+LAYER 1.137 5.14 -50.674 2.986 -29.435 2.621 -0.007
+LAYER 1.151 4.419 11.614 2.567 6.746 2.524 0.002
+LAYER 1.166 4.585 4.13 2.663 -13.254 2.547 0.008
+LAYER 1.171 4.608 -7.758 2.59 -14.803 2.592 0.009
+LAYER 1.177 4.562 -18.511 2.502 -15.675 2.648 0.001
+LAYER 1.183 4.457 -5.957 2.414 -5.449 2.655 -0.006
+LAYER 1.187 4.431 -2.654 2.39 -0.899 2.626 0.0
+LAYER 1.194 4.414 -4.296 2.384 -0.052 2.626 0.003
+LAYER 1.201 4.382 2.556 2.383 9.69 2.647 -0.004
+LAYER 1.206 4.395 8.394 2.432 15.552 2.627 -0.009
+LAYER 1.21 4.431 -9.971 2.497 -2.18 2.59 -0.005
+LAYER 1.215 4.378 -13.604 2.486 -7.932 2.562 -0.003
+LAYER 1.222 4.286 41.95 2.432 26.412 2.545 -0.005
+LAYER 1.226 4.434 66.814 2.525 41.086 2.529 -0.0
+LAYER 1.234 5.003 179.232 2.875 114.797 2.525 -0.0
+LAYER 1.238 5.634 4.112 3.279 -12.58 2.524 -0.001
+LAYER 1.243 5.657 -114.388 3.209 -84.267 2.519 0.001
+LAYER 1.251 4.8 -27.472 2.578 -13.217 2.524 0.001
+LAYER 1.257 4.639 93.314 2.5 73.743 2.527 -0.003
+LAYER 1.264 5.324 0.125 3.042 13.256 2.507 0.003
+LAYER 1.273 5.325 -53.252 3.156 -31.425 2.531 0.014
+LAYER 1.277 5.075 -22.157 3.009 -12.367 2.598 0.02
+LAYER 1.282 4.975 1.489 2.953 -0.094 2.687 0.006
+LAYER 1.288 4.983 14.482 2.952 3.686 2.72 -0.018
+LAYER 1.291 5.034 9.391 2.965 4.869 2.658 -0.013
+LAYER 1.298 5.099 -1.716 2.999 12.414 2.572 0.003
+LAYER 1.301 5.093 -16.322 3.042 -1.044 2.584 0.008
+LAYER 1.311 4.942 -16.605 3.033 6.005 2.661 -0.0
+LAYER 1.315 4.871 11.808 3.058 15.551 2.66 -0.006
+LAYER 1.32 4.935 21.643 3.143 22.56 2.627 -0.006
+LAYER 1.324 5.008 6.401 3.219 12.231 2.608 -0.002
+LAYER 1.327 5.031 5.828 3.262 3.378 2.6 0.0
+LAYER 1.331 5.053 19.845 3.275 8.48 2.601 0.001
+LAYER 1.337 5.173 0.061 3.326 6.428 2.61 0.001
+LAYER 1.345 5.173 -14.984 3.378 -8.59 2.619 -0.001
+LAYER 1.351 5.087 -8.148 3.328 -51.865 2.612 -0.004
+LAYER 1.356 5.048 7.69 3.078 -14.751 2.591 0.001
+LAYER 1.365 5.121 15.539 2.939 8.154 2.599 0.002
+LAYER 1.37 5.193 11.299 2.976 6.466 2.607 0.0
+LAYER 1.376 5.258 7.057 3.014 6.63 2.609 0.002
+LAYER 1.38 5.29 -14.713 3.044 13.331 2.617 0.003
+LAYER 1.384 5.238 -16.359 3.092 4.281 2.627 -0.001
+LAYER 1.39 5.137 -3.505 3.118 -4.692 2.623 -0.002
+LAYER 1.396 5.117 1.205 3.091 -4.976 2.613 -0.001
+LAYER 1.399 5.121 -8.388 3.074 2.014 2.608 0.0
+LAYER 1.404 5.081 -5.284 3.084 9.662 2.61 0.002
+LAYER 1.408 5.057 10.989 3.128 3.765 2.619 0.002
+LAYER 1.414 5.123 12.896 3.151 -3.181 2.629 0.001
+LAYER 1.42 5.191 18.033 3.134 8.063 2.636 0.001
+LAYER 1.424 5.264 32.522 3.166 32.22 2.64 -0.002
+LAYER 1.428 5.394 14.48 3.295 20.833 2.633 -0.002
+LAYER 1.433 5.468 -28.435 3.403 -18.166 2.622 -0.001
+LAYER 1.438 5.33 -40.632 3.314 -33.332 2.618 -0.0
+LAYER 1.443 5.109 15.701 3.133 3.728 2.616 -0.0
+LAYER 1.452 5.244 9.524 3.165 9.154 2.614 0.001
+LAYER 1.462 5.341 -21.62 3.258 3.916 2.629 0.003
+LAYER 1.469 5.189 -14.494 3.285 6.772 2.647 0.003
+LAYER 1.475 5.107 -2.74 3.324 8.958 2.662 -0.0
+LAYER 1.478 5.097 -1.638 3.356 -5.83 2.661 -0.004
+LAYER 1.482 5.09 -0.248 3.331 -22.159 2.645 -0.006
+LAYER 1.486 5.089 8.115 3.252 -21.852 2.625 -0.003
+LAYER 1.49 5.119 17.448 3.171 -10.627 2.614 0.001
+LAYER 1.493 5.184 13.876 3.132 1.887 2.618 0.004
+LAYER 1.498 5.245 -4.534 3.14 8.371 2.635 0.003
+LAYER 1.503 5.222 -0.555 3.183 9.959 2.65 -0.002
+LAYER 1.509 5.218 0.408 3.248 10.835 2.637 -0.002
+LAYER 1.516 5.221 -8.184 3.324 -9.017 2.62 -0.001
+LAYER 1.52 5.191 21.867 3.291 -11.347 2.617 0.0
+LAYER 1.529 5.377 22.756 3.194 2.975 2.617 0.001
+LAYER 1.536 5.533 -47.539 3.214 -18.873 2.627 0.001
+LAYER 1.542 5.228 -51.214 3.093 -31.115 2.633 -0.005
+LAYER 1.55 4.79 3.829 2.827 4.913 2.586 -0.004
+LAYER 1.559 4.824 18.57 2.87 23.95 2.547 0.003
+LAYER 1.565 4.932 22.257 3.009 26.578 2.566 0.006
+LAYER 1.568 5.004 29.99 3.096 30.587 2.587 0.006
+LAYER 1.572 5.106 12.624 3.2 17.48 2.607 0.002
+LAYER 1.578 5.186 15.179 3.311 -1.933 2.619 -0.002
+LAYER 1.582 5.251 16.734 3.303 -8.322 2.612 -0.004
+LAYER 1.59 5.379 20.449 3.239 4.242 2.579 -0.002
+LAYER 1.598 5.532 6.687 3.271 5.862 2.562 0.0
+LAYER 1.602 5.56 -49.042 3.295 -6.605 2.562 0.002
+LAYER 1.607 5.302 -34.356 3.26 -4.357 2.572 0.001
+LAYER 1.614 5.053 -7.038 3.229 4.592 2.582 0.001
+LAYER 1.62 5.012 4.424 3.256 -2.075 2.587 0.005
+LAYER 1.627 5.045 8.981 3.24 -1.944 2.623 0.005
+LAYER 1.633 5.095 5.718 3.229 1.646 2.651 -0.004
+LAYER 1.639 5.128 2.755 3.239 0.938 2.627 -0.006
+LAYER 1.644 5.142 -17.581 3.244 -13.498 2.596 -0.003
+LAYER 1.648 5.072 -23.57 3.19 -14.921 2.583 0.0
+LAYER 1.657 4.864 -30.55 3.058 -18.096 2.584 0.002
+LAYER 1.66 4.746 15.969 2.989 -12.558 2.593 0.003
+LAYER 1.664 4.801 26.164 2.946 -2.445 2.603 0.001
+LAYER 1.67 4.971 -8.475 2.93 -8.283 2.607 0.001
+LAYER 1.675 4.932 -42.217 2.891 -15.481 2.611 0.001
+LAYER 1.678 4.789 -38.855 2.839 -16.198 2.615 0.001
+LAYER 1.682 4.663 6.973 2.786 0.868 2.617 -0.001
+LAYER 1.689 4.714 6.621 2.793 -0.894 2.612 -0.002
+LAYER 1.694 4.75 -14.167 2.788 -0.79 2.603 -0.001
+LAYER 1.702 4.647 -7.659 2.782 6.868 2.599 0.002
+LAYER 1.708 4.599 -2.581 2.824 -4.911 2.609 0.004
+LAYER 1.713 4.586 -4.026 2.8 -15.868 2.629 0.004
+LAYER 1.717 4.568 -5.261 2.728 -13.213 2.648 0.0
+LAYER 1.722 4.546 2.731 2.671 -0.705 2.649 -0.003
+LAYER 1.728 4.563 21.809 2.666 11.207 2.632 -0.0
+LAYER 1.738 4.766 25.376 2.77 18.726 2.631 -0.0
+LAYER 1.744 4.916 -13.667 2.881 -5.779 2.629 0.0
+LAYER 1.751 4.816 -12.56 2.839 -18.537 2.629 0.001
+LAYER 1.754 4.773 34.388 2.776 5.78 2.633 0.001
+LAYER 1.761 5.007 4.823 2.815 3.064 2.637 0.0
+LAYER 1.77 5.048 -20.336 2.841 5.737 2.637 0.0
+LAYER 1.774 4.967 -6.994 2.864 6.066 2.638 -0.0
+LAYER 1.779 4.929 6.832 2.897 -0.003 2.637 -0.001
+LAYER 1.785 4.967 6.349 2.897 -1.148 2.633 -0.0
+LAYER 1.793 5.022 4.119 2.887 6.661 2.632 0.0
+LAYER 1.797 5.038 -0.655 2.912 13.521 2.632 0.0
+LAYER 1.801 5.035 4.353 2.964 7.306 2.632 0.0
+LAYER 1.809 5.069 3.642 3.021 4.528 2.633 -0.0
+LAYER 1.816 5.094 11.871 3.052 -3.438 2.631 -0.001
+LAYER 1.819 5.138 10.18 3.04 -4.707 2.628 -0.0
+LAYER 1.828 5.223 10.291 3.0 -1.617 2.626 0.0
+LAYER 1.834 5.292 9.727 2.99 2.919 2.628 -0.001
+LAYER 1.838 5.327 -1.608 3.0 7.382 2.625 -0.003
+LAYER 1.844 5.317 7.881 3.045 7.306 2.607 -0.001
+LAYER 1.851 5.369 16.518 3.094 2.332 2.598 0.001
+LAYER 1.855 5.44 -6.898 3.104 -3.331 2.604 0.004
+LAYER 1.859 5.411 -13.839 3.089 0.771 2.62 0.002
+LAYER 1.865 5.333 3.665 3.094 5.618 2.634 0.0
+LAYER 1.87 5.352 12.931 3.123 9.024 2.634 -0.001
+LAYER 1.874 5.404 1.064 3.159 2.798 2.628 -0.001
+LAYER 1.881 5.411 2.983 3.178 -2.874 2.622 -0.001
+LAYER 1.887 5.431 8.515 3.159 -3.86 2.618 0.001
+LAYER 1.892 5.466 1.278 3.143 -1.551 2.623 0.002
+LAYER 1.895 5.471 -15.52 3.138 -2.765 2.631 0.001
+LAYER 1.9 5.398 -13.22 3.125 -5.9 2.635 -0.001
+LAYER 1.905 5.325 1.195 3.092 -9.841 2.632 -0.0
+LAYER 1.909 5.329 10.47 3.059 -2.23 2.631 0.0
+LAYER 1.913 5.375 -18.579 3.049 3.746 2.632 0.0
+LAYER 1.921 5.229 -6.184 3.079 -2.961 2.635 0.0
+LAYER 1.928 5.184 24.32 3.058 -9.365 2.635 -0.001
+LAYER 1.933 5.302 2.249 3.013 2.715 2.628 -0.001
+LAYER 1.944 5.326 0.356 3.042 3.583 2.618 0.0
+LAYER 1.947 5.327 -1.634 3.055 -0.457 2.619 0.002
+LAYER 1.952 5.32 -6.058 3.053 2.302 2.627 0.003
+LAYER 1.956 5.295 -12.151 3.062 1.723 2.638 0.0
+LAYER 1.962 5.228 8.108 3.072 -3.891 2.64 -0.003
+LAYER 1.967 5.269 17.683 3.052 0.821 2.627 0.001
+LAYER 1.975 5.425 2.138 3.059 3.319 2.637 -0.001
+LAYER 1.982 5.439 1.952 3.082 -0.957 2.632 -0.002
+LAYER 1.991 5.456 -5.222 3.073 -2.496 2.613 0.001
+LAYER 1.997 5.426 -10.265 3.058 2.846 2.616 0.002
+LAYER 2.0 5.39 -17.526 3.068 6.733 2.624 0.001
+LAYER 2.005 5.309 -37.172 3.1 -6.947 2.629 0.0
+LAYER 2.011 5.075 -4.59 3.056 -3.265 2.632 0.0
+LAYER 2.022 5.026 -1.135 3.021 -1.674 2.632 -0.001
+LAYER 2.027 5.021 -6.884 3.013 -6.784 2.628 0.0
+LAYER 2.032 4.987 0.886 2.98 -3.602 2.629 0.001
+LAYER 2.037 4.992 0.673 2.963 0.818 2.635 0.001
+LAYER 2.042 4.995 -10.862 2.967 -5.485 2.642 0.0
+LAYER 2.05 4.912 -14.673 2.925 -11.853 2.643 -0.001
+LAYER 2.059 4.768 -37.515 2.809 -27.331 2.629 -0.001
+LAYER 2.063 4.638 -12.665 2.714 -8.018 2.625 0.001
+LAYER 2.068 4.573 9.297 2.673 6.19 2.629 0.001
+LAYER 2.074 4.628 22.824 2.709 16.167 2.633 0.001
+LAYER 2.078 4.735 10.685 2.785 11.456 2.64 0.0
+LAYER 2.087 4.83 -1.061 2.887 -0.096 2.643 0.0
+LAYER 2.095 4.821 -21.723 2.886 -15.453 2.643 -0.001
+LAYER 2.1 4.726 -5.159 2.818 -2.853 2.638 -0.001
+LAYER 2.109 4.68 28.099 2.793 16.873 2.627 0.001
+LAYER 2.115 4.859 16.104 2.9 10.61 2.633 0.001
+LAYER 2.123 4.995 -20.479 2.99 -14.648 2.639 -0.001
+LAYER 2.128 4.899 -16.083 2.921 -13.34 2.636 -0.001
+LAYER 2.134 4.799 4.439 2.838 2.04 2.627 -0.0
+LAYER 2.143 4.838 -7.885 2.856 -4.102 2.623 -0.0
+LAYER 2.151 4.774 -1.997 2.823 -0.334 2.619 -0.0
+LAYER 2.157 4.762 15.668 2.821 8.64 2.618 0.002
+LAYER 2.164 4.869 14.598 2.88 6.982 2.63 0.001
+LAYER 2.169 4.942 2.875 2.915 -2.045 2.636 -0.001
+LAYER 2.174 4.957 5.801 2.904 -1.983 2.631 -0.001
+LAYER 2.179 4.989 13.101 2.893 -0.111 2.626 0.001
+LAYER 2.183 5.036 7.745 2.893 -4.777 2.628 0.002
+LAYER 2.187 5.065 -6.813 2.876 -6.75 2.634 0.0
+LAYER 2.193 5.02 -1.595 2.832 -1.142 2.636 -0.001
+LAYER 2.199 5.011 9.256 2.825 6.067 2.628 -0.002
+LAYER 2.203 5.055 6.624 2.854 5.333 2.619 0.0
+LAYER 2.209 5.089 -32.697 2.881 -14.325 2.62 0.003
+LAYER 2.213 4.955 -19.288 2.822 -9.972 2.633 0.001
+LAYER 2.222 4.77 20.413 2.727 11.598 2.643 0.001
+LAYER 2.23 4.925 28.774 2.815 17.335 2.649 0.0
+LAYER 2.236 5.113 24.234 2.928 15.503 2.652 0.0
+LAYER 2.24 5.201 10.035 2.985 3.285 2.652 0.0
+LAYER 2.245 5.251 -1.408 3.001 -6.613 2.653 0.001
+LAYER 2.25 5.244 -2.955 2.967 -3.73 2.659 0.001
+LAYER 2.256 5.226 13.209 2.944 3.577 2.665 -0.001
+LAYER 2.264 5.33 -26.612 2.972 -25.732 2.659 -0.0
+LAYER 2.271 5.136 -44.636 2.785 -26.321 2.658 0.001
+LAYER 2.277 4.866 -6.633 2.626 -0.567 2.666 0.001
+LAYER 2.283 4.831 16.618 2.623 12.073 2.672 0.0
+LAYER 2.287 4.899 3.703 2.672 5.834 2.673 -0.0
+LAYER 2.291 4.914 5.43 2.696 21.246 2.672 0.0
+LAYER 2.295 4.934 14.361 2.773 14.475 2.672 0.0
+LAYER 2.304 5.064 37.715 2.905 18.697 2.673 0.0
+LAYER 2.307 5.202 8.42 2.973 0.843 2.673 -0.001
+LAYER 2.316 5.273 1.057 2.98 -0.014 2.667 -0.003
+LAYER 2.32 5.278 -4.041 2.98 -1.672 2.655 -0.0
+LAYER 2.328 5.246 -59.764 2.967 -50.152 2.653 0.002
+LAYER 2.332 5.01 -39.806 2.769 -26.612 2.66 0.0
+LAYER 2.345 4.478 -29.858 2.414 -17.094 2.66 0.001
+LAYER 2.349 4.365 32.35 2.349 16.41 2.663 0.001
+LAYER 2.352 4.483 52.598 2.409 26.112 2.667 0.0
+LAYER 2.359 4.803 58.417 2.567 28.378 2.67 0.0
+LAYER 2.363 5.069 12.169 2.697 7.984 2.67 -0.001
+LAYER 2.37 5.149 -7.682 2.749 1.821 2.666 -0.001
+LAYER 2.376 5.102 -0.046 2.76 5.448 2.662 0.0
+LAYER 2.381 5.102 0.629 2.79 -2.796 2.663 -0.001
+LAYER 2.385 5.104 2.006 2.779 -5.471 2.661 -0.001
+LAYER 2.392 5.119 13.598 2.74 4.139 2.657 0.001
+LAYER 2.4 5.22 16.522 2.771 5.568 2.661 0.001
+LAYER 2.405 5.311 10.369 2.802 -0.091 2.664 -0.0
+LAYER 2.409 5.352 -1.856 2.801 -0.723 2.663 0.0
+LAYER 2.414 5.343 -4.945 2.798 3.211 2.663 -0.0
+LAYER 2.421 5.309 -4.638 2.819 0.186 2.662 -0.0
+LAYER 2.426 5.283 6.665 2.82 1.151 2.66 -0.0
+LAYER 2.434 5.33 13.998 2.829 9.813 2.659 0.0
+LAYER 2.44 5.426 9.977 2.896 14.976 2.662 0.001
+LAYER 2.445 5.47 -6.602 2.962 7.322 2.665 0.001
+LAYER 2.449 5.444 -23.444 2.991 -11.127 2.667 -0.0
+LAYER 2.454 5.316 -32.096 2.93 -18.208 2.666 0.0
+LAYER 2.462 5.071 -17.648 2.791 -9.162 2.668 0.0
+LAYER 2.47 4.934 -7.996 2.72 3.513 2.67 0.0
+LAYER 2.474 4.899 -2.495 2.736 7.159 2.67 -0.0
+LAYER 2.481 4.882 -10.628 2.785 14.656 2.667 -0.003
+LAYER 2.485 4.843 -6.484 2.838 -1.377 2.656 -0.001
+LAYER 2.495 4.775 -1.165 2.824 -6.273 2.65 0.0
+LAYER 2.501 4.768 9.5 2.788 -2.072 2.65 0.0
+LAYER 2.508 4.832 1.781 2.774 -5.331 2.65 0.0
+LAYER 2.516 4.846 -0.622 2.731 -14.223 2.65 0.0
+LAYER 2.519 4.843 27.555 2.675 6.047 2.65 0.0
+LAYER 2.526 5.019 69.515 2.714 28.665 2.65 0.0
+
+# =============================================================================
+# Grid2Time control file statements
+# =============================================================================
+
+# input, output filename root
+# (GTFILES <input file root> <output file root> wave_type (P, S))
+
+# Just for the P
+GTFILES  ./NLLoc/model/3km0.025  ./NLLoc/time/3km0.025 P
+# GTFILES  ./NLLoc/model/3km0.025  ./NLLoc/time/3km0.025 S # Just use Vp/VS ratio in NLLoc control file
+
+# time grid modes
+GTMODE GRID3D ANGLES_NO
+
+# source description (multiple sources can be specified)
+# (GTSRCE  label  x_srce  y_srce   z_srce   elev)
+
+GTSRCE PR01 LATLON 53.788724 -2.957447 1.561 0.0
+GTSRCE PR02 LATLON 53.788713 -2.957705 1.586 0.0
+GTSRCE PR03 LATLON 53.788711 -2.957948 1.611 0.0
+GTSRCE PR04 LATLON 53.788700 -2.958205 1.636 0.0
+GTSRCE PR05 LATLON 53.788698 -2.958463 1.661 0.0
+GTSRCE PR06 LATLON 53.788677 -2.958736 1.685 0.0
+GTSRCE PR07 LATLON 53.788648 -2.959009 1.709 0.0
+GTSRCE PR08 LATLON 53.788610 -2.959281 1.732 0.0
+GTSRCE PR09 LATLON 53.788581 -2.959569 1.756 0.0
+GTSRCE PR10 LATLON 53.788543 -2.959856 1.778 0.0
+GTSRCE PR11 LATLON 53.788513 -2.960144 1.801 0.0
+GTSRCE PR12 LATLON 53.788484 -2.960432 1.824 0.0
+GTSRCE PR13 LATLON 53.788455 -2.960720 1.847 0.0
+GTSRCE PR14 LATLON 53.788417 -2.961007 1.870 0.0
+GTSRCE PR15 LATLON 53.788387 -2.961295 1.893 0.0
+GTSRCE PR16 LATLON 53.788349 -2.961598 1.916 0.0
+GTSRCE PR17 LATLON 53.788320 -2.961885 1.938 0.0
+GTSRCE PR18 LATLON 53.788290 -2.962173 1.961 0.0
+GTSRCE PR19 LATLON 53.788270 -2.962461 1.985 0.0
+GTSRCE PR20 LATLON 53.788241 -2.962749 2.007 0.0
+GTSRCE PR21 LATLON 53.788247 -2.963098 2.027 0.0
+GTSRCE PR22 LATLON 53.788244 -2.963462 2.044 0.0
+GTSRCE PR23 LATLON 53.788232 -2.963872 2.058 0.0
+GTSRCE PR24 LATLON 53.788219 -2.964296 2.069 0.0
+
+# Podvin & Lecomte Finite Difference params
+GT_PLFD  1.0e-3  2
+
+# =============================================================================
+# NLLoc control file statements
+# =============================================================================
+
+# signature
+# (LOCSIG signature)
+LOCSIG Cindy Lim, University of Bristol, PhD project Feb 2021
+
+# comment
+# (LOCCOM comment)
+LOCCOM 3km x 3 km x 3 km search grid at 0.025km spacing. P phase only.
+
+# input  grid filenames root, output filename (basically observation files)
+# (LOCFILES <obs file> obs_type  <travel-time grid files path/root> <output file path/root>)
+#    (char[])  obs_type : (NLLOC_OBS, HYPO71, HYPOELLIPSE, RENASS_DEP, SEISAN)
+
+# CORRECT ONE FOR P vvvvvv
+LOCFILES ./NLLOC_OBS/PS_181211_NLLOC_OBS.hpf NLLOC_OBS ./NLLoc/time/3km0.025 ./NLLoc/loc/ALLP
+
+# output hypocenter file types
+# (LOCHYPOUT type1, type2, ...)
+#    (char[])   typeN (SAVE_NLLOC_ALL, SAVE_NLLOC_SUM,SAVE_HYPO71_ALL, SAVE_HYPO71_SUM, SAVE_HYPOELL_ALL, SAVE_HYPOELL_SUM,	SAVE_HYPOINV_SUM, SAVE_NLLOC_OCTREE), SAVE_NLLOC_ALL SAVE_NLLOC_SUM  SAVE_HYPOINV_SUM SAVE_HYPOINVERSE_Y2000_ARC
+
+LOCHYPOUT  SAVE_NLLOC_ALL SAVE_HYPOINVERSE_Y2000_ARC SAVE_HYPOINV_SUM SAVE_HYPOELL_ALL SAVE_HYPO71_ALL SAVE_HYPOELL_SUM
+
+# search type
+# (LOCSEARCH search_type <params>)
+#    (char[])   search_type (GRID, MET (Metropolis), SA (Simulated Annealing))
+#    <params>:
+#	GRID NumScatterSamples
+#	MET  NumSamples NumLearn NumEquil BeginSave NumSkip
+#               StepInit StepMin StepFact ProbMin
+#	OCT init_num_cells_x, init_num_cells_y, init_num_cells_z,
+#		min_node_size, max_num_nodes, num_scatter,
+#		use_stations_density (1 = Weights oct-tree cell prob values used for subdivide decision
+#				in proportion to number of stations in oct-tree cell.
+#				Gives higher search priority to cells containing stations,
+#				stablises convergence to local events when global search used
+#				with dense cluster of local stations.),
+#		stop_on_min_node_size (1 = stop search when first min_node_size reached,
+#				0 = stop subdividing a given cell when min_node_size reached.)
+LOCSEARCH  OCT 11 11 11 0.010 20000 5000 1 1
+
+# location grids description
+# (LOCGRID  num_grid_x  num_grid_y  num_grid_z
+#	orig_grid_x  orig_grid_y  orig_grid_z
+#	d_grid_x d_grid_y d_grid_z
+#       type save_flag
+#    (float) num_grid_x/y/z : number of nodes along x/y/z axis
+#    (float)    orig_grid_x : x location of grid origin (0,0,0) in km pos east
+#    (float)    orig_grid_y : y location of grid origin (0,0,0) in km pos north
+#    (float)    orig_grid_z : z location of grid origin (0,0,0) in km pos down
+#    (float)   d_grid_x/y/x : grid spacing along  x/y/z axis
+#    (char[])  type : (PROB_DENSITY, MISFIT)
+#    (char[])  save_flag : (SAVE, NO_SAVE)
+# For Grid search, first grid is used for initial search.  Subsequent grids are
+# shifted in x/y/z so that they are centered on the minimum misfit hypocenter
+# x/y/z of the previous grid if x/y/z < -1.0e20.
+#
+# e.g. LOCGRID  81 81 121  0.0 0.0 -1.5  0.5 0.5 0.5   PROB_DENSITY  SAVE
+
+LOCGRID  121 121 121  0.0 0.0 0.0 0.025 0.025 0.025   PROB_DENSITY  SAVE
+
+# method
+# (LOCMETH method)
+#    (char[])   method (GAU_ANALYTIC, EDT, EDT_OT_WT)
+#          GAU_ANALYTIC - L2 norm following Tarantola and Valette (1982)
+#          EDT - Equal Differential Time (see )
+#          EDT_OT_WT - Weights EDT sum prob by variance of OT estimated over all pairs of readings.
+#                              Downweights locations with inconsistent OT estimates.
+#    (float)   maximum_dist_sta_to_grid (use very large value for no max)
+#    (int)   minimum_number_phases for location
+#    (int)   maximum_number_phases for location (-1 for no max)
+#    (int)   minimum_number_S_phases for location (-1 for no min)
+#    (float)   Vp/Vs ratio (< 0.0 to use S travel time grids)
+#    (int)   maximum_number_3D_grids to attempt to read into memory (-1 for no max)
+#    (float)   minimum_dist_sta_to_grid (-1 for no min)
+#    (int)   flag indicating if duplicate arrivals used for location (1=reject, 0=use if time diff < sigma / 2)
+#            duplicate arrivals have same station label and phase name
+
+LOCMETH EDT_OT_WT  9999  4 -1 -1 -1 -1 -1 0
+
+# set Vp/Vs ratio to use travel time grids
+# maybe set maximum_number_3D_grids to attempt to read into memory (-1 for no max) to 10?
+
+# gaussian model error parameters
+# (LOCGAU Sigma_T (s), CorrLen (km))
+LOCGAU 0.1 0.0
+
+# travel-time dependent gaussian model error parameters
+# (LOCGAU2 SigmaTfraction,  SigmaTmin (s),  SigmaTmax (s))
+# travel time error is travel_time*SigmaTfraction, with max/min value = SigmaTmin/SigmaTmax
+LOCGAU2 0.01 0.0 0.1
+
+
+# phase identifier mapping
+# (LOCPHASEID phase  phase_id0 phase_id1 ...)
+LOCPHASEID  P   P p G PN PG
+LOCPHASEID  S   S s G SN SG
+
+# quality to error mapping (for HYPO71, etc)
+# (LOCQUAL2ERR Err0 Err1 Err2 ... )
+# the following quality mapping is default from Hypoellipse documentation
+LOCQUAL2ERR 0.05 0.1 0.2 0.5 99999.9
+### These correspond with 0,1,2,3,4 pick weightings so changed to the ones I used when QC'ing picks:
+#LOCQUAL2ERR 0.1 0.2 0.33 0.5 99999.9
+
+# phase statistics parameters
+# (LOCPHSTAT RMS_Max, NRdgs_Min, Gap_Max, P_ResMax, S_ResMax)
+#    (float)   RMS_Max : max hypocenter RMS to include in ave res
+#    (float)   NRdgs_Min : min hypocenter num readings to include in ave res
+#    (float)   Gap_Max : max hypocenter gap (deg) to include in ave res
+#    (float)   P_ResMax : max abs(P res) to include in ave res
+#    (float)   S_ResMax : max abs(S res) to include in ave res
+#    (float)   S_ResMax : max abs(S res) to include in ave res
+#    (float)   Ell_Len3_Max : max ellipsoid major semi-axis length to include in ave res
+#    (float)   Hypo_Depth_Min : min hypo depth to include in ave res
+#    (float)   Hypo_Depth_Max : max hypo depth to include in ave res
+LOCPHSTAT 9999.0 -1 9999.0 9999.9 9999.9 9999.9 -9999.9 9999.9
+
+
+# take-off angles mode & minimum quality
+# (LOCANGLES angles_mode, min_quality)
+#    (char[])   angles_mode (ANGLES_YES, ANGLES_NO)
+#    (integer)   min_quality : minimum quality to use take-off angles
+LOCANGLES ANGLES_NO 5
