@@ -1,5 +1,5 @@
-# PNR_run
-## PhD project: Comparing deep learning models: Classification test results and event catalogues generated from the PNR-1z dataset
+# PhD project: PNR_run
+## Comparing deep learning models: Classification test results and event catalogues generated from the PNR-1z dataset
 
 - Catalog folder: Contains the CMM event catalogue for the PNR-1z site as well as event and station information.
 - Classification Test folder: Code that runs the classification tests and mseed input data.
