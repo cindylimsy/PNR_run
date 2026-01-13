@@ -11,3 +11,9 @@
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=cindylimsy&background=0d1116&stroke=58a5fe&ring=58a5fe&currStreakNum=58a5fe&sideNums=58a5fe&fire=58a5fe&currStreakLabel=58a5fe&sideLabels=58a5fe&dates=c3d0d8)](https://git.io/streak-stats)
 
 https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=rainbow
+
+<picture decoding="async" loading="lazy">
+  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summer">
+  <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=blue_chill">
+  <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=<username>&theme=summer">
+</picture>
