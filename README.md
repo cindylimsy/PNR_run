@@ -13,3 +13,11 @@
   <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=journey">
   <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summer&pixelate_avatar=false>">
 </picture>
+
+https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=journey&pixelate_avatar=false
+
+<picture decoding="async" loading="lazy">
+  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summery&pixelate_avatar=false">
+  <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=summery&pixelate_avatar=false">
+  <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summery&pixelate_avatar=false">
+</picture>
