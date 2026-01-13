@@ -9,7 +9,7 @@
 
 
 <picture decoding="async" loading="lazy">
-  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summer"
+  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summer">
   <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=journey">
   <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=summer&pixelate_avatar=false>">
 </picture>
