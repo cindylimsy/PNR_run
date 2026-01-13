@@ -8,7 +8,7 @@
 - Data folder: Contains one hour of continuous downhole data from the PNR-1z dataset.
 
 <picture decoding="async" loading="lazy">
-  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=journey&pixelate_avatar=false">
-  <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&screen_effect=true&theme=journey&pixelate_avatar=false">
-  <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=journey&pixelate_avatar=false">
+  <source media="(prefers-color-scheme: light)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=roadtrip&pixelate_avatar=false">
+  <source media="(prefers-color-scheme: dark)" srcset="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=journey&pixelate_avatar=false">
+  <img alt="github stats" src="https://pixel-profile.vercel.app/api/github-stats?username=cindylimsy&theme=roadtrip&pixelate_avatar=false">
 </picture>
